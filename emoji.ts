@@ -11,53 +11,43 @@ class Emoji {
         this.canvas = document.getElementById("canvas");
         this.context = this.canvas.getContext('2d');
 
-        this.image = new Image();
+        if (this.picture) this.setImage(this.picture);
     }
 
-    imageToCanvas():void{
+    setImage(picture) {
+        this.image = new Image();
 
-        let canvas = this.canvas,
-            context = this.context,
-            image = this.image;
+        let emoji = this;
 
-        image.onload = () => {
-            context.drawImage(image,0,0,canvas.width,canvas.height);
+        // canvas aრ მისცემს საიტს უფლებას რომ getImageData გამოიყენო ფოტოზე რომელიც
+        // სხვა საიტიდან წამოიღე, ამიტომ ეს ატრიბუტი უნდა
+        this.image.setAttribute("crossOrigin", "Anonymous");
+        this.image.onload = function(){
+            emoji.canvas.width = this.width;
+            emoji.canvas.height = this.height;
+            emoji.context.drawImage(this, 0, 0, this.width, this.height);
+
+            if (typeof this.onImageLoad === "function") {
+                this.onImageLoad();
+            }
         };
+        this.image.src = picture;
 
+    }
 
-
-
-        image.src = this.picture;
-    };
-
-    rgbToHex(r, g, b):string {
-        if (r > 255 || g > 255 || b > 255)
-            throw "Invalid color component";
-        return ((r << 16) | (g << 8) | b).toString(16);
-    };
-
-
-    getCanvasColors():void {
-
+    getCanvasColors() {
         let canvas = this.canvas,
-            context = this.context,
-            image = this.image;
+            context = this.context;
 
+        let pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
 
-        this.imageToCanvas();
+        let pixelColors: string[] = [];
 
-        let pixel = context.getImageData( 0 , 0 , canvas.width , canvas.height ).data;
-        let hex = "#" + ("000000" + this.rgbToHex(pixel[0], pixel[1], pixel[2])).slice(-6);
-
-
-        let pixelArr: any = [];
-
-
-        for(let i = 0 ; i < pixel.length; i++) {
-            pixelArr.push(pixel[i]);
+        for(let g = 0 ; g < pixels.length ; g += 4) {
+            pixelColors.push(pixels[g] + ',' + pixels[g + 1] + ',' + pixels[g + 2]);
         }
 
-        console.log(pixelArr);
+        console.log(pixelColors);
 
     }
 
