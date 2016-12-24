@@ -1,33 +1,70 @@
 class Emoji {
 
     public picture : string;
+    private canvas;
+    private context;
+    public image;
 
     constructor(picture: string) {
         this.picture = picture;
+
+        this.canvas = document.getElementById("canvas");
+        this.context = this.canvas.getContext('2d');
+
+        this.image = new Image();
     }
 
     imageToCanvas():void{
-        let canvas = document.getElementById("canvas");
-        let context = canvas.getContext('2d');
-        let image = new Image();
 
-        image.onload = function() {
+        let canvas = this.canvas,
+            context = this.context,
+            image = this.image;
+
+        image.onload = () => {
             context.drawImage(image,0,0,canvas.width,canvas.height);
-        }
+        };
+
+
+
 
         image.src = this.picture;
+    };
 
+    rgbToHex(r, g, b):string {
+        if (r > 255 || g > 255 || b > 255)
+            throw "Invalid color component";
+        return ((r << 16) | (g << 8) | b).toString(16);
     };
 
 
-    getCanvasColors() {
+    getCanvasColors():void {
+
+        let canvas = this.canvas,
+            context = this.context,
+            image = this.image;
+
+
+        this.imageToCanvas();
+
+        let pixel = context.getImageData( 0 , 0 , canvas.width , canvas.height ).data;
+        let hex = "#" + ("000000" + this.rgbToHex(pixel[0], pixel[1], pixel[2])).slice(-6);
+
+
+        let pixelArr: any = [];
+
+
+        for(let i = 0 ; i < pixel.length; i++) {
+            pixelArr.push(pixel[i]);
+        }
+
+        console.log(pixelArr);
 
     }
 
 }
 
-var test:Emoji = new Emoji("http://www.lunapic.com/editor/premade/transparent.gif");
+const test:Emoji = new Emoji("https://scontent-vie1-1.xx.fbcdn.net/v/t31.0-8/15591476_1383178805056939_3259992289809107891_o.jpg?oh=f4031aef100ff4a282ab32d8fab6d821&oe=58F79006");
 
-window.onload = function() {
-    test.imageToCanvas();
-}
+window.onload = () =>  {
+    test.getCanvasColors();
+};
