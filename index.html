@@ -6,10 +6,18 @@
 </head>
 <body style="text-align: center">
 
+<button onclick="testFunct()">CLICK HERE</button><br>
 
-<canvas id="canvas" width="500" height="500">your canvas loads here</canvas>
 
 <script src="emoji.js"></script>
+
+<script>
+    var testFunct = function() {
+        var imageUrl = prompt('Please links us image that you want to Emojinate');
+        var test = new Emoji(imageUrl);
+        test.getCanvasColors();
+    }
+</script>
 
 </body>
 </html>
