@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="12e86679-2894-4684-a699-5800e957e3f9" name="Default" comment="Changed Information from a">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emoji.js" afterPath="$PROJECT_DIR$/emoji.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emoji.ts" afterPath="$PROJECT_DIR$/emoji.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+    <list default="true" id="12e86679-2894-4684-a699-5800e957e3f9" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="bd77f565-e3f2-4641-8de2-1532ecf7c07b" name="Rejected commit: Default" comment="some changes">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/Emoji.iml" />
@@ -35,8 +32,8 @@
       <file leaf-file-name="emoji.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/emoji.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="42" column="66" lean-forward="true" selection-start-line="42" selection-start-column="66" selection-end-line="42" selection-end-column="66" />
+            <state relative-caret-position="14">
+              <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -45,13 +42,11 @@
       <file leaf-file-name="emoji.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/emoji.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state relative-caret-position="60">
+              <caret line="4" column="8" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
               <folding>
-                <marker date="1482853462000" expanded="true" signature="321:937" ph="{...}" />
-                <marker date="1482853462000" expanded="true" signature="611:896" ph="{...}" />
-                <marker date="1482853462000" expanded="true" signature="835:886" ph="{...}" />
-                <marker date="1482853462000" expanded="true" signature="989:1478" ph="{...}" />
+                <marker date="1482925003000" expanded="true" signature="1675:2576" ph="{...}" />
+                <marker date="1482925003000" expanded="true" signature="2630:2944" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -60,8 +55,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="165">
+              <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -123,7 +118,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -136,8 +130,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Emoji" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Emoji" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="emoji.ts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NestingTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -224,7 +233,8 @@
       <updated>1482425698609</updated>
       <workItem from="1482425701719" duration="4326000" />
       <workItem from="1482589387175" duration="9712000" />
-      <workItem from="1482851434550" duration="1580000" />
+      <workItem from="1482851434550" duration="5353000" />
+      <workItem from="1482914565437" duration="2673000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1482427157372</created>
@@ -254,24 +264,45 @@
       <option name="project" value="LOCAL" />
       <updated>1482603597944</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Changed Information from array of color to the object of colors x and y positions">
+      <created>1482853493752</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1482853493752</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Converting image to 8bit added">
+      <created>1482878928976</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1482878928976</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Converting image to 8bit added with fixes">
+      <created>1482925129044</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1482925129044</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15618000" />
+    <option name="totallyTimeSpent" value="22064000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867885" sideWeight="0.4978903" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24834238" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2477396" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32959184" sideWeight="0.5117541" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32959184" sideWeight="0.51416516" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32959184" sideWeight="0.48824593" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32959184" sideWeight="0.48583484" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -300,7 +331,10 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="some changes" />
     <MESSAGE value="Saving every pixels colors to array" />
-    <option name="LAST_COMMIT_MESSAGE" value="Saving every pixels colors to array" />
+    <MESSAGE value="Changed Information from array of color to the object of colors x and y positions" />
+    <MESSAGE value="Converting image to 8bit added" />
+    <MESSAGE value="Converting image to 8bit added with fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Converting image to 8bit added with fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -320,10 +354,8 @@
         <state relative-caret-position="555">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding>
-            <marker date="1482853462000" expanded="true" signature="321:937" ph="{...}" />
-            <marker date="1482853462000" expanded="true" signature="611:896" ph="{...}" />
-            <marker date="1482853462000" expanded="true" signature="835:886" ph="{...}" />
-            <marker date="1482853462000" expanded="true" signature="989:1478" ph="{...}" />
+            <marker date="1482925003000" expanded="true" signature="1675:2576" ph="{...}" />
+            <marker date="1482925003000" expanded="true" signature="2630:2944" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -350,21 +382,19 @@
     <entry file="file://$PROJECT_DIR$/facebook.js" />
     <entry file="file://$PROJECT_DIR$/emoji.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state relative-caret-position="60">
+          <caret line="4" column="8" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
           <folding>
-            <marker date="1482853462000" expanded="true" signature="321:937" ph="{...}" />
-            <marker date="1482853462000" expanded="true" signature="611:896" ph="{...}" />
-            <marker date="1482853462000" expanded="true" signature="835:886" ph="{...}" />
-            <marker date="1482853462000" expanded="true" signature="989:1478" ph="{...}" />
+            <marker date="1482925003000" expanded="true" signature="1675:2576" ph="{...}" />
+            <marker date="1482925003000" expanded="true" signature="2630:2944" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="165">
+          <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
@@ -373,8 +403,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/emoji.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="42" column="66" lean-forward="true" selection-start-line="42" selection-start-column="66" selection-end-line="42" selection-end-column="66" />
+        <state relative-caret-position="14">
+          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding />
         </state>
       </provider>
