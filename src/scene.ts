@@ -1,4 +1,12 @@
-import { Pixelator } from './pix';
+// require.d.ts
+declare var require: {
+    <T>(path: string): T;
+    (paths: string[], callback: (...modules: any[]) => void): void;
+    ensure: (paths: string[], callback: (require: <T>(path: string) => T) => void) => void;
+};
+
+// import jsonData from '../public/emoji.json';
+var EmojiColors = require('../public/emoji.json');
 
 export class Scene {
 
@@ -8,7 +16,9 @@ export class Scene {
 
     mosaicSize: number = 32;
 
-    constructor() {
+    private pixelColors: any;
+
+    constructor(config?) {
 
         this.canvas = document.getElementsByTagName('canvas')[0] || document.createElement('canvas');
         this.context = this.canvas.getContext('2d');
@@ -16,6 +26,10 @@ export class Scene {
         document.body.appendChild(this.canvas);
 
         this.image = new Image();
+
+        this.image.setAttribute("crossOrigin", "Anonymous");
+
+        this.mosaicSize = config.mosaicSize || this.mosaicSize;
 
     }
 
@@ -55,6 +69,8 @@ export class Scene {
         let scaledW = this.canvas.width / this.mosaicSize;
         let scaledH = this.canvas.height / this.mosaicSize;
 
+
+
         this.context.mozImageSmoothingEnabled = false;
         this.context.webkitImageSmoothingEnabled = false;
         this.context.msImageSmoothingEnabled = false;
@@ -66,7 +82,7 @@ export class Scene {
 
     }
 
-    getColors() {
+    findColors() {
 
         let canvas = this.canvas,
             context = this.context;
@@ -85,13 +101,8 @@ export class Scene {
 
             let index = (xPos + yPos * canvas.width) * 4;
 
-            console.log('%c ' + xPos + ' ' + yPos, 'background: rgb(' + pixels[index + 0] + ',' + pixels[index + 1] + ',' + pixels[index + 2] + ')')
-
             pixelColors.push({
-                point: {
-                    x: xPos,
-                    y: yPos
-                },
+                point: { x: xPos, y: yPos },
                 color: { r: pixels[index + 0], g: pixels[index + 1], b: pixels[index + 2] }
             })
 
@@ -108,7 +119,103 @@ export class Scene {
 
         } while (true);
 
-        return pixelColors;
+        this.pixelColors = pixelColors;
+    }
+
+    getColorsJSON() {
+
+        let data = this.pixelColors;
+
+        let ret = {};
+        for (let i in data) {
+            let point = data[i].point;
+            let color = data[i].color;
+
+            let colorS = color.r + ',' + color.g + ',' + color.b;
+            ret[colorS] = ret[colorS] || [];
+
+            ret[colorS].push(point);
+
+        }
+
+        return ret;
+    }
+
+    matchPixels() {
+
+        //Convert to RGB, then R, G, B
+        var baseColors = Object.keys(EmojiColors);
+
+        for (var i in this.pixelColors) {
+
+            let point = this.pixelColors[i].point;
+            let color = this.pixelColors[i].color;
+
+            //Create an emtyp array for the difference betwwen the colors
+            var differenceArray = [];
+
+            //Function to find the smallest value in an array
+            let min = function (array) {
+                return Math.min.apply(Math, array);
+            };
+
+            //Convert the HEX color in the array to RGB colors, split them up to R-G-B, then find out the difference between the "color" and the colors in the array
+            for (let index in baseColors) {
+
+                let base_color = baseColors[index];
+                let [base_colors_r, base_colors_g, base_colors_b] = base_color.split(',');
+
+                //Add the difference to the differenceArray
+                differenceArray.push(Math.sqrt((color.r - +base_colors_r) * (color.r - +base_colors_r) + (color.g - +base_colors_g) * (color.g - +base_colors_g) + (color.b - +base_colors_b) * (color.b - +base_colors_b)));
+            };
+
+            //Get the lowest number from the differenceArray
+            var lowest = min(differenceArray);
+
+            //Get the index for that lowest number
+            var index = differenceArray.indexOf(lowest);
+
+            this.pixelColors[i].emojis = EmojiColors[baseColors[index]];
+            // var match = base_colors[index];
+            //Return the HEX code
+        }
+
+    }
+
+
+    drawEmojis() {
+
+
+        let me = this;
+        let img = new Image();
+
+        let emojiSize = 64;
+
+        let scaleTo = me.mosaicSize;
+
+        // me.context.clearRect(0, 0, me.canvas.width, me.canvas.height);
+
+        img.onload = function () {
+
+            console.log("Starging Emojilator");
+
+            for (var i in me.pixelColors) {
+
+
+                let target = me.pixelColors[i].point;
+                let emojis = me.pixelColors[i].emojis;
+                let lucky = Math.floor(Math.random() * emojis.length);
+
+                let emoji = emojis[lucky];
+
+                me.context.drawImage(img, emoji.x, emoji.y, emojiSize, emojiSize, target.x, target.y, scaleTo, scaleTo);
+
+            }
+
+        };
+
+        img.src = './public/img/sprite.png';
+
     }
 
 }
