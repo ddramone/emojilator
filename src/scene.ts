@@ -199,8 +199,31 @@ export class Scene {
 
             console.log("Starging Emojilator");
 
+
+            function shuffle(array) {
+                var currentIndex = array.length, temporaryValue, randomIndex;
+
+                // While there remain elements to shuffle...
+                while (0 !== currentIndex) {
+
+                    // Pick a remaining element...
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+
+                    // And swap it with the current element.
+                    temporaryValue = array[currentIndex];
+                    array[currentIndex] = array[randomIndex];
+                    array[randomIndex] = temporaryValue;
+                }
+
+                return array;
+            }
+
+            me.pixelColors = shuffle(me.pixelColors);
             for (var i in me.pixelColors) {
 
+
+                let scaleRand = scaleTo + Math.floor(Math.random() * emojiSize / 6);
 
                 let target = me.pixelColors[i].point;
                 let emojis = me.pixelColors[i].emojis;
@@ -208,7 +231,11 @@ export class Scene {
 
                 let emoji = emojis[lucky];
 
-                me.context.drawImage(img, emoji.x, emoji.y, emojiSize, emojiSize, target.x, target.y, scaleTo, scaleTo);
+                let angleInRadians = Math.random() * 90;
+
+                me.context.drawImage(img, emoji.x, emoji.y, emojiSize, emojiSize, target.x, target.y, scaleRand, scaleRand);
+
+
 
             }
 
