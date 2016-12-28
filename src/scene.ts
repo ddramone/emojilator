@@ -235,8 +235,6 @@ export class Scene {
 
                 me.context.drawImage(img, emoji.x, emoji.y, emojiSize, emojiSize, target.x, target.y, scaleRand, scaleRand);
 
-
-
             }
 
         };
