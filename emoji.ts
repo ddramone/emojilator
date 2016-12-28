@@ -29,14 +29,12 @@ class Emoji implements IEmoji{
         let scaledW = this.canvas.width * scale;
         let scaledH = this.canvas.height * scale;
 
-        let context = this.canvas.getContext('2d');
+        this.context.mozImageSmoothingEnabled = false;
+        this.context.webkitImageSmoothingEnabled = false;
+        this.context.imageSmoothingEnabled = false;
 
-        context.mozImageSmoothingEnabled = false;
-        context.webkitImageSmoothingEnabled = false;
-        context.imageSmoothingEnabled = false;
-
-        context.drawImage(this.image, 0, 0, scaledW, scaledH);
-        context.drawImage(this.canvas, 0, 0, scaledW, scaledH, 0, 0, this.image.width, this.image.height);
+        this.context.drawImage(this.image, 0, 0, scaledW, scaledH);
+        this.context.drawImage(this.canvas, 0, 0, scaledW, scaledH, 0, 0, this.image.width, this.image.height);
 
     }
 
@@ -65,7 +63,6 @@ class Emoji implements IEmoji{
 
         this.image.src = picture;
 
-
     }
 
     getCanvasColors() {
@@ -76,16 +73,16 @@ class Emoji implements IEmoji{
         let canvas = this.canvas,
             context = this.context;
 
-        this.eightBit(2);
+        this.eightBit(1);
 
 
         let pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
 
         let pixelColors: any[] = [];
 
-        for(let g = 0 , y = 0 , x = 0; g < pixels.length ; g += 4) {
+        for(let g = 0 , y = 0 , x = 0; g < pixels.length ; g += 50) {
             if(g % this.canvas.width == 0) {
-                y++;
+                y += 50;
                 x = 1;
             } else x++;
             let color: string = pixels[g] + ',' + pixels[g + 1] + ',' + pixels[g + 2];
@@ -107,24 +104,10 @@ class Emoji implements IEmoji{
             context = this.context;
         let testObj : any = {};
 
+        let test : number = 1;
         console.log('start');
-        for(let i = 0 , x = 0 , y = 0 ; i < 500; i++) {
-            console.log(i);
-            let testArray : any[] = [];
-            if(x % this.canvas.width == 0) {
-                x = 0;
-                y = y + 2;
-            } else {
-                x = x + 2;
-            }
-
-            testObj = {
-                firstColor : context.getImageData( x , y , canvas.width , canvas.height).data,
-                secondColor: context.getImageData( x + 1 , y , canvas.width , canvas.height).data,
-                thirdColor : context.getImageData( x , y + 1 , canvas.width , canvas.height).data,
-                fourthColor: context.getImageData(x + 1 , y + 1 , canvas.width , canvas.height).data,
-            }
-
+        for(let i = 0; i < this.getCanvasColors().length; i += 50) {
+            console.log(test++);
         }
         console.log('end');
         console.log(testObj);
