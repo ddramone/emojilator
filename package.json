@@ -26,5 +26,9 @@
     "typescript": "^2.1.4",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "dropzone": "^4.3.0",
+    "react-dropzone": "^3.8.0"
   }
 }

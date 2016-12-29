@@ -27,8 +27,6 @@ export class Scene {
 
         this.image = new Image();
 
-        this.image.setAttribute("crossOrigin", "Anonymous");
-
         this.mosaicSize = config.mosaicSize || this.mosaicSize;
 
     }
@@ -52,10 +50,11 @@ export class Scene {
             me.context.drawImage(img, 0, 0, img.width, img.height);
 
             callback();
-
         };
 
         me.image.src = url;
+
+
 
     }
 
@@ -166,7 +165,7 @@ export class Scene {
                 let [base_colors_r, base_colors_g, base_colors_b] = base_color.split(',');
 
                 //Add the difference to the differenceArray
-                differenceArray.push(Math.sqrt((color.r - +base_colors_r) * (color.r - +base_colors_r) + (color.g - +base_colors_g) * (color.g - +base_colors_g) + (color.b - +base_colors_b) * (color.b - +base_colors_b)));
+                differenceArray.push((color.r - +base_colors_r) * (color.r - +base_colors_r) + (color.g - +base_colors_g) * (color.g - +base_colors_g) + (color.b - +base_colors_b) * (color.b - +base_colors_b));
             };
 
             //Get the lowest number from the differenceArray
@@ -223,7 +222,7 @@ export class Scene {
             for (var i in me.pixelColors) {
 
 
-                let scaleRand = scaleTo + Math.floor(Math.random() * emojiSize / 6);
+                let scaleRand = scaleTo + Math.floor(Math.random() * emojiSize / 4);
 
                 let target = me.pixelColors[i].point;
                 let emojis = me.pixelColors[i].emojis;
