@@ -68,8 +68,6 @@ export class Scene {
         let scaledW = this.canvas.width / this.mosaicSize;
         let scaledH = this.canvas.height / this.mosaicSize;
 
-
-
         this.context.mozImageSmoothingEnabled = false;
         this.context.webkitImageSmoothingEnabled = false;
         this.context.msImageSmoothingEnabled = false;
@@ -192,6 +190,7 @@ export class Scene {
 
         let scaleTo = me.mosaicSize;
 
+        this.context.drawImage(this.image, 0, 0, me.canvas.width, me.canvas.height);
         // me.context.clearRect(0, 0, me.canvas.width, me.canvas.height);
 
         img.onload = function () {
@@ -222,6 +221,7 @@ export class Scene {
             for (var i in me.pixelColors) {
 
 
+
                 let scaleRand = scaleTo + Math.floor(Math.random() * emojiSize / 4);
 
                 let target = me.pixelColors[i].point;
@@ -232,7 +232,9 @@ export class Scene {
 
                 let angleInRadians = Math.random() * 90;
 
-                me.context.drawImage(img, emoji.x, emoji.y, emojiSize, emojiSize, target.x, target.y, scaleRand, scaleRand);
+                setTimeout(function () {
+                    me.context.drawImage(img, emoji.x, emoji.y, emojiSize, emojiSize, target.x, target.y, scaleRand, scaleRand);
+                }, +i / 5)
 
             }
 

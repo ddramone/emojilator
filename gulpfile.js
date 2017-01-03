@@ -4,7 +4,7 @@ var sprity = require('sprity');
 // generate sprite.png and _sprite.scss 
 gulp.task('sprites', function () {
     return sprity.src({
-        src: './emojis/**/*.{png,jpg}',
+        src: './emojis/new/**/*.{png,jpg}',
         orientation: 'binary-tree',
         margin: 0
     })
