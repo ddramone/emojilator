@@ -10,7 +10,7 @@ module.exports = {
 
   output: {
     path: helpers.path,
-    filename: "bundle.js"
+    filename: "app.bundle.js"
   },
 
   resolve: {

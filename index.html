@@ -3,13 +3,79 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Emojilator</title>
+    <title>Emoji</title>
+    <meta name="author" content="Ika Pkhakadze">
+
+    <meta property="og:url" content="http://emoji.ge/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Emojilator" />
+    <meta property="og:description" content="Create emoji mosaic of your photo" />
+    <meta property="og:image" content="http://emoji.ge/assets/images/poop.png" />
+    <meta property="fb:app_id" content="622287571313421" />
+
+
+    <link rel="stylesheet" href="assets/css/app.css">
 </head>
 
-<body style="text-align: center">
+<body>
+    <!--  class="is-loading is-done" -->
 
-<form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
+    <div class="c-loading">
+        <img src="assets/images/poop.png" alt="Emoji">
+        <img src="assets/images/poop.png" alt="Emoji">
+        <img src="assets/images/poop.png" alt="Emoji">
+    </div>
+    <!-- /.c-loading -->
 
-<script type="text/javascript" src="bundle.js"></script><script type="text/javascript" src="bundle.js"></script></body>
+    <header class="c-header c-promo">
+        <img src="assets/images/poop.png" alt="Emoji">
+
+        <h1>Draw your picture with <span>Emojis</span></h1>
+    </header>
+    <!-- /.c-header -->
+
+    <main class="c-content">
+
+
+
+        <canvas class="c-result" id="emojiCanvas"></canvas>
+
+
+        <div class="c-promo">
+            <img src="assets/images/original_sc.png" class="o-image" alt="Original">
+            <img src="assets/images/emoji_sc.png" class="o-image" alt="Emojied">
+        </div>
+
+        <div class="u-space-top">
+            <div class="u-space-top c-download">
+
+                <a class="c-button" id="download">Download</a>
+
+            </div>
+
+            <form action="/file-upload" class="dropzone c-button" id="my-awesome-dropzone"></form>
+        </div>
+
+        <!-- /.u-space-top -->
+    </main>
+
+    <!-- /.c-content -->
+
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+            fjs.parentNode.insertBefore(js, fjs);
+        } (document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-like-container">
+    <div class="fb-like" data-href="http://emoji.ge/index.html" data-layout="standard" data-action="like" data-size="large" data-show-faces="true"
+        data-share="true"></div>
+</div>
+
+<script type="text/javascript" src="app.bundle.js"></script>
+</body>
 
 </html>

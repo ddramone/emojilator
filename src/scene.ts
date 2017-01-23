@@ -5,7 +5,6 @@ declare var require: {
     ensure: (paths: string[], callback: (require: <T>(path: string) => T) => void) => void;
 };
 
-// import jsonData from '../public/emoji.json';
 var EmojiColors = require('../public/emoji.json');
 
 export class Scene {
@@ -14,20 +13,20 @@ export class Scene {
     context: CanvasRenderingContext2D;
     image: HTMLImageElement;
 
-    mosaicSize: number = 32;
+    maxImageWidth: number = 1000;
+    defaultMosaicSize: number = 10;
+    defaultCanvasWidth: number = 600;
+    mosaicSize: number;
 
     private pixelColors: any;
 
     constructor(config?) {
 
-        this.canvas = document.getElementsByTagName('canvas')[0] || document.createElement('canvas');
+        this.canvas = <HTMLCanvasElement>document.getElementById('emojiCanvas');
         this.context = this.canvas.getContext('2d');
 
-        document.body.appendChild(this.canvas);
 
         this.image = new Image();
-
-        this.mosaicSize = config.mosaicSize || this.mosaicSize;
 
     }
 
@@ -43,11 +42,35 @@ export class Scene {
 
             let img = <HTMLImageElement>me.image;
 
-            // Set Canvas Dimensions
-            me.canvas.width = img.width;
-            me.canvas.height = img.height;
+            let ratio = img.width / img.height;
 
-            me.context.drawImage(img, 0, 0, img.width, img.height);
+            let scaledW = img.width > this.maxImageWidth ? this.maxImageWidth : img.width;
+            let scaledH = scaledW / ratio;
+
+            if (scaledH > this.maxImageWidth) {
+                scaledH = this.maxImageWidth
+                scaledW = scaledH * ratio;
+            }
+
+            // Set Canvas Dimensions
+            me.canvas.width = scaledW;
+            me.canvas.height = scaledH;
+
+
+            let width = this.defaultCanvasWidth;
+
+            let height = width / ratio;
+
+
+            this.mosaicSize = Math.round(this.defaultMosaicSize * scaledW / width);
+
+
+            console.log(scaledW, scaledH, width, height, this.mosaicSize);
+
+            document.getElementById('emojiCanvas').style.width = width + "px";
+            me.canvas.style.height = height + "px";
+
+            me.context.drawImage(img, 0, 0, scaledW, scaledH);
 
             callback();
         };
@@ -75,7 +98,7 @@ export class Scene {
         this.context['imageSmoothingEnabled'] = false;
 
         this.context.drawImage(this.image, 0, 0, scaledW, scaledH);
-        this.context.drawImage(this.canvas, 0, 0, scaledW, scaledH, 0, 0, this.image.width, this.image.height);
+        this.context.drawImage(this.canvas, 0, 0, scaledW, scaledH, 0, 0, this.canvas.width, this.canvas.height);
 
     }
 
@@ -179,8 +202,22 @@ export class Scene {
 
     }
 
+    addSingature() {
 
-    drawEmojis() {
+        let me = this;
+        let img = new Image();
+
+        // img.onload = function () {
+
+        // me.context.drawImage(img, 0, 0, img.width, img.height);
+
+        // };
+
+        // img.src = './public/singature.png';
+
+    }
+
+    drawEmojis(callback?: any) {
 
 
         let me = this;
@@ -190,7 +227,7 @@ export class Scene {
 
         let scaleTo = me.mosaicSize;
 
-        this.context.drawImage(this.image, 0, 0, me.canvas.width, me.canvas.height);
+        // this.context.drawImage(this.image, 0, 0, me.canvas.width, me.canvas.height);
         // me.context.clearRect(0, 0, me.canvas.width, me.canvas.height);
 
         img.onload = function () {
@@ -217,10 +254,8 @@ export class Scene {
                 return array;
             }
 
-            me.pixelColors = shuffle(me.pixelColors);
+            // me.pixelColors = shuffle(me.pixelColors);
             for (var i in me.pixelColors) {
-
-
 
                 let scaleRand = scaleTo + Math.floor(Math.random() * emojiSize / 4);
 
@@ -232,9 +267,11 @@ export class Scene {
 
                 let angleInRadians = Math.random() * 90;
 
-                setTimeout(function () {
-                    me.context.drawImage(img, emoji.x, emoji.y, emojiSize, emojiSize, target.x, target.y, scaleRand, scaleRand);
-                }, +i / 5)
+                // setTimeout(function () {
+                me.context.drawImage(img, emoji.x, emoji.y, emojiSize, emojiSize, target.x, target.y, scaleRand, scaleRand);
+
+                callback();
+                // }, +i / 5)
 
             }
 
@@ -242,6 +279,24 @@ export class Scene {
 
         img.src = './public/img/sprite.png';
 
+    };
+
+    downloadCanvas(link, filename) {
+
+        let dt = (<HTMLCanvasElement>document.getElementById("emojiCanvas")).toDataURL();
+
+        /* Change MIME type to trick the browser to downlaod the file instead of displaying it */
+        dt = dt.replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
+
+        /* In addition to <a>'s "download" attribute, you can define HTTP-style headers */
+        dt = dt.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=Canvas.png');
+
+        link.href = dt;
+        link.download = filename;
+
+        // link.download = filename;
     }
+
+
 
 }
