@@ -18,7 +18,7 @@ document.getElementById('download').addEventListener('click', function () {
 
 Dropzone.options.myAwesomeDropzone = {
 
-    maxFilesize: 1, // MB
+    maxFilesize: 6, // MB
 
     error: function (file) {
 

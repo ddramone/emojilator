@@ -53,7 +53,7 @@
 	    scene.downloadCanvas(this, 'Emoji.png');
 	}, false);
 	Dropzone.options.myAwesomeDropzone = {
-	    maxFilesize: 1,
+	    maxFilesize: 6,
 	    error: function (file) {
 	        alert("Choose smaller image. Maximum 1MB");
 	        this.removeFile(file);
