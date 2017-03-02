@@ -14,7 +14,7 @@ export class Scene {
     image: HTMLImageElement;
 
     maxImageWidth: number = 1000;
-    defaultMosaicSize: number = 10;
+    defaultMosaicSize: number = 8;
     defaultCanvasWidth: number = 600;
     mosaicSize: number;
 
@@ -52,9 +52,7 @@ export class Scene {
                 scaledW = scaledH * ratio;
             }
 
-            // Set Canvas Dimensions
-            me.canvas.width = scaledW;
-            me.canvas.height = scaledH;
+
 
 
             let width = this.defaultCanvasWidth;
@@ -62,7 +60,19 @@ export class Scene {
             let height = width / ratio;
 
 
+            // Set Canvas Dimensions
+            me.canvas.width = scaledW;
+            me.canvas.height = scaledH;
+
+
+
             this.mosaicSize = Math.round(this.defaultMosaicSize * scaledW / width);
+
+            // scaledW = img.width;//json
+            // scaledH = img.height;//json
+            // width = img.width;//json
+            // height = img.height;//json
+            // this.mosaicSize = 64; //json
 
 
             console.log(scaledW, scaledH, width, height, this.mosaicSize);
@@ -254,7 +264,7 @@ export class Scene {
                 return array;
             }
 
-            // me.pixelColors = shuffle(me.pixelColors);
+            me.pixelColors = shuffle(me.pixelColors);
             for (var i in me.pixelColors) {
 
                 let scaleRand = scaleTo + Math.floor(Math.random() * emojiSize / 4);

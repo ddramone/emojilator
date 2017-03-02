@@ -9,7 +9,7 @@ module.exports = {
   },
 
   output: {
-    path: helpers.path,
+    path: helpers.root(),
     filename: "app.bundle.js"
   },
 

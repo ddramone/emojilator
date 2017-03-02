@@ -22,7 +22,7 @@ Dropzone.options.myAwesomeDropzone = {
 
     error: function (file) {
 
-        alert("Choose smaller image. Maximum 1MB");
+        alert("Choose smaller image. Maximum 6MB");
         this.removeFile(file);
 
         return false;
@@ -65,5 +65,5 @@ Dropzone.options.myAwesomeDropzone = {
 };
 
 
-// scene = new Scene({ mosaicSize: 64 }); scene.loadImage('public/tst.png', function () { scene.mosaic(); scene.findColors(); var json = scene.getColorsJSON(); console.log(JSON.stringify(json)); }); /**
+// scene = new Scene({ mosaicSize: 64 }); scene.loadImage('public/tst.png', function () { scene.findColors(); var json = scene.getColorsJSON(); console.log(JSON.stringify(json)); document.getElementsByTagName('body')[0].classList.add('is-done'); });
 
